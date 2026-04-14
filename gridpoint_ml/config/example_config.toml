@@ -1,0 +1,19 @@
+[grid]
+times = ["2020-01-01 00:00", "2020-01-01 12:00"]
+lats = [30.0, 31.0, 32.0]
+lons = [-90.0, -89.0, -88.0]
+
+[data]
+features_csv = "path/to/features.csv"
+target_netcdf_pattern = "/path/to/sim_{sim_id}/sim_{sim_id}_variable.nc"
+sim_id_format = "03d"
+n_simulations = 117
+target_variable = "temperature"
+
+[pipeline]
+max_workers = 64
+output_dir = "path/to/save/models"
+training_script = "user_scripts/my_train.py"
+
+[metadata]
+save_metadata = true

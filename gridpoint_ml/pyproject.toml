@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gridpoint_ml"
+version = "0.1.0"
+description = "Train ML models in parallel for every gridpoint in a spatiotemporal grid"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "pandas",
+    "netCDF4",
+    "tqdm",
+    "tomli; python_version < '3.11'",
+    "scikit-learn",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gridpoint_ml*"]

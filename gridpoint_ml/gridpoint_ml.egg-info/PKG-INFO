@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: gridpoint_ml
+Version: 0.1.0
+Summary: Train ML models in parallel for every gridpoint in a spatiotemporal grid
+Requires-Python: >=3.9
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: netCDF4
+Requires-Dist: tqdm
+Requires-Dist: tomli; python_version < "3.11"
+Requires-Dist: scikit-learn
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"

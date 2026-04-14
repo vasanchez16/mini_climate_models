@@ -1,0 +1,11 @@
+numpy
+pandas
+netCDF4
+tqdm
+scikit-learn
+
+[:python_version < "3.11"]
+tomli
+
+[dev]
+pytest
