@@ -27,8 +27,10 @@ def _write_training_script(path: str) -> None:
 
         def save(model, path):
             import json
-            with open(path + ".json", "w") as f:
+            full_path = path + ".json"
+            with open(full_path, "w") as f:
                 json.dump(model, f)
+            return full_path
 
         def load(path):
             import json
@@ -129,4 +131,4 @@ def test_pipeline_end_to_end(tmp_path):
 
     assert len(results) == 1  # 1 time * 1 lat * 1 lon
     assert results[0].success, f"Pipeline failed: {results[0].error}"
-    assert os.path.exists(results[0].model_path + ".json")
+    assert os.path.exists(results[0].model_path)

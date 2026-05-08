@@ -3,10 +3,14 @@ data.py — Load features from CSV and extract target values from NetCDF4 files.
 """
 from __future__ import annotations
 
+import logging
+
 import numpy as np
 import pandas as pd
 
 from .grid import Gridpoint
+
+logger = logging.getLogger(__name__)
 
 
 def load_features(features_csv: str) -> np.ndarray:
@@ -63,16 +67,18 @@ def _extract_scalar(ds, variable: str, gridpoint: Gridpoint) -> float:
         coord = ds.variables[dim][:]
 
         if dim in ("time", "t"):
-            # Match by string representation if stored as numeric
             target = gridpoint.time
-            # Try to match via cftime or numeric index
             try:
-                import cftime
+                import netCDF4 as nc
                 times = nc.num2date(coord, units=ds.variables[dim].units)
                 time_strs = [t.strftime("%Y-%m-%d %H:%M") for t in times]
                 idx[dim] = time_strs.index(target)
-            except Exception:
-                idx[dim] = 0  # fallback: first time step
+            except Exception as e:
+                logger.warning(
+                    "Time matching failed for '%s' (target=%s): %s — falling back to index 0",
+                    dim, target, e,
+                )
+                idx[dim] = 0
 
         elif dim in ("lat", "latitude"):
             idx[dim] = int(np.argmin(np.abs(coord - gridpoint.lat)))

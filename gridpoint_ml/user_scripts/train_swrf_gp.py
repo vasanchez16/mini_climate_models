@@ -12,13 +12,22 @@ from __future__ import annotations
 
 import joblib
 import numpy as np
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import Matern
 
 
 def train(X: np.ndarray, y: np.ndarray):
     """Train a RandomForestRegressor and return the fitted model."""
-    model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=1)
+
+    # create kernel object
+    lengthScale = [1]*12
+    nu = 0.5
+    coefficient = 1.0
+    kernel = coefficient * Matern(length_scale = lengthScale, nu = nu)
+
+    model = GaussianProcessRegressor(kernel=kernel, normalize_y=True)
     model.fit(X, y)
+
     return model
 
 

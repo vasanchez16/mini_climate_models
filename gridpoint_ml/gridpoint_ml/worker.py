@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from typing import Any
 
 from .grid import Gridpoint
 from .data import load_targets
@@ -50,9 +49,9 @@ def train_gridpoint(
 
         # Determine output path and save
         os.makedirs(output_dir, exist_ok=True)
-        model_filename = f"model_{gridpoint.label()}"
-        model_path = os.path.join(output_dir, model_filename)
-        module.save(model, model_path)
+        model_stem = os.path.join(output_dir, f"model_{gridpoint.label()}")
+        # save() returns the actual path it wrote (may append an extension)
+        model_path = module.save(model, model_stem)
 
         # Write sidecar metadata
         meta_path = ""
@@ -61,7 +60,7 @@ def train_gridpoint(
                 gridpoint=gridpoint,
                 model_path=model_path,
                 training_script=training_script,
-                output_dir=output_dir,
+                model_path_on_disk=model_path,
             )
 
         return WorkerResult(

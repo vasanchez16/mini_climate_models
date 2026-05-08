@@ -11,7 +11,7 @@ import numpy as np
 from tqdm import tqdm
 
 from .data import load_features
-from .grid import enumerate_gridpoints, Gridpoint
+from .grid import enumerate_gridpoints
 from .io import load_config
 from .worker import train_gridpoint, WorkerResult
 
@@ -51,7 +51,7 @@ class Pipeline:
         worker_fn = partial(train_gridpoint, X=X, config=config)
 
         with ProcessPoolExecutor(max_workers=max_workers) as executor:
-            futures = {executor.submit(worker_fn, gp): gp for gp in gridpoints}
+            futures = {executor.submit(worker_fn, gpoint): gpoint for gpoint in gridpoints}
 
             with tqdm(total=n_total, desc="Gridpoints", unit="gp") as pbar:
                 for future in as_completed(futures):

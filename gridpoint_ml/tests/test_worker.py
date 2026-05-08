@@ -19,8 +19,10 @@ def _write_training_script(path: str) -> None:
 
         def save(model, path):
             import json
-            with open(path + ".json", "w") as f:
-                import json; json.dump(model, f)
+            full_path = path + ".json"
+            with open(full_path, "w") as f:
+                json.dump(model, f)
+            return full_path
 
         def load(path):
             import json
@@ -68,7 +70,7 @@ def test_worker_success(monkeypatch):
         result = train_gridpoint(gp, X, config)
 
         assert result.success, f"Expected success, got error: {result.error}"
-        assert os.path.exists(result.model_path + ".json")
+        assert os.path.exists(result.model_path)
         assert result.metadata_path != ""
         assert os.path.exists(result.metadata_path)
 

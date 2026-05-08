@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import itertools
 from dataclasses import dataclass
-from typing import Iterator
 
 
 @dataclass(frozen=True)
@@ -16,7 +15,7 @@ class Gridpoint:
 
     def label(self) -> str:
         """Return a filesystem-safe label for this gridpoint."""
-        time_safe = self.time.replace(" ", "T").replace(":", "")
+        time_safe = self.time.replace(" ", "T").replace(":", "_")
         return f"t{time_safe}_lat{self.lat:.4f}_lon{self.lon:.4f}"
 
 

@@ -14,10 +14,13 @@ def save_metadata(
     gridpoint: Gridpoint,
     model_path: str,
     training_script: str,
-    output_dir: str,
+    model_path_on_disk: str = "",
 ) -> str:
     """
     Write a JSON sidecar file next to the saved model.
+
+    model_path_on_disk is the actual file path returned by save() and recorded
+    in the JSON. model_path (the stem) is used to derive the sidecar filename.
 
     Returns the path to the metadata file.
     """
@@ -26,7 +29,7 @@ def save_metadata(
         "lat": gridpoint.lat,
         "lon": gridpoint.lon,
         "training_script": os.path.abspath(training_script),
-        "model_path": os.path.abspath(model_path),
+        "model_path": os.path.abspath(model_path_on_disk or model_path),
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
     }
 
