@@ -13,7 +13,7 @@ target_variable = "toa_outgoing_shortwave_flux"
 [pipeline]
 max_workers = 64
 output_dir = "/ocean/projects/atm200005p/vsanchez/results_2026_Q1/local_ml_predictions/test_run/trained_models/"
-training_script = "/Users/vasanchez/Developer/mini_climate_models/gridpoint_ml/user_scripts/train_swrf_gp.py"
+training_script = "user_scripts/train_swrf_gp.py"
 
 [metadata]
 save_metadata = true
