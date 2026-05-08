@@ -4,7 +4,7 @@ lats = [1.875, 3.125, 4.375]
 lons = [-0.9375, 0.9375, 2.8125]
 
 [data]
-features_csv = "/jet/home/vsanchez/c3DataPrep/smoke_PPE_Unit_Design.csv"
+features_csv = "/ocean/projects/atm200005p/vsanchez/results_2026_Q1/local_ml_predictions/norm_features.csv"
 target_netcdf_pattern = "/ocean/projects/atm200005p/vsanchez/results_2026_Q1/ceres_time_matching/nc_files/sppe_sim_{sim_id}_swrf_ceres_aligned.nc"
 sim_id_format = "d"
 n_simulations = 121
