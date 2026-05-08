@@ -1,19 +1,19 @@
 [grid]
-times = ["2020-01-01 00:00", "2020-01-01 12:00"]
-lats = [30.0, 31.0, 32.0]
-lons = [-90.0, -89.0, -88.0]
+times = ["2017-08-01 10:30", "2017-08-01 13:30"]
+lats = [1.875, 3.125, 4.375]
+lons = [-0.9375, 0.9375, 2.8125]
 
 [data]
-features_csv = "path/to/features.csv"
-target_netcdf_pattern = "/path/to/sim_{sim_id}/sim_{sim_id}_variable.nc"
-sim_id_format = "03d"
-n_simulations = 117
-target_variable = "temperature"
+features_csv = "/jet/home/vsanchez/c3DataPrep/smoke_PPE_Unit_Design.csv"
+target_netcdf_pattern = "/ocean/projects/atm200005p/vsanchez/results_2026_Q1/ceres_time_matching/nc_files/sppe_sim_{sim_id}_swrf_ceres_aligned.nc"
+sim_id_format = "d"
+n_simulations = 121
+target_variable = "toa_outgoing_shortwave_flux"
 
 [pipeline]
 max_workers = 64
-output_dir = "path/to/save/models"
-training_script = "user_scripts/my_train.py"
+output_dir = "/ocean/projects/atm200005p/vsanchez/results_2026_Q1/local_ml_predictions/test_run/trained_models/"
+training_script = "/Users/vasanchez/Developer/mini_climate_models/gridpoint_ml/user_scripts/train_swrf_gp.py"
 
 [metadata]
 save_metadata = true
