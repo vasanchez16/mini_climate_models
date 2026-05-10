@@ -1,0 +1,5 @@
+[prediction]
+metadata_dir = "path/to/metadata/json/files"
+test_features_csv = "path/to/test_features.csv"
+output_dir = "path/to/save/netcdf4/files"
+max_workers = 64

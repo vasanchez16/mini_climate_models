@@ -54,7 +54,7 @@ def load_training_module(script_path: str) -> ModuleType:
 
     # validate that the user's script actually defines the three required functions
     # if any are missing, raise a clear error telling the user what they forgot
-    for required in ("train", "save", "load"):
+    for required in ("train", "save", "load", "predict"):
         if not hasattr(module, required):
             raise AttributeError(
                 f"Training script '{abs_path}' must define a '{required}' function."
