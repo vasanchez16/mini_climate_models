@@ -71,7 +71,7 @@ def _extract_scalar(ds, variable: str, gridpoint: Gridpoint) -> float:
             try:
                 import netCDF4 as nc
                 times = nc.num2date(coord, units=ds.variables[dim].units)
-                time_strs = [t.strftime("%Y-%m-%d %H:%M") for t in times]
+                time_strs = [t.strftime("%Y-%m-%d %H:%M:%S") for t in times]
                 idx[dim] = time_strs.index(target)
             except Exception as e:
                 logger.warning(
