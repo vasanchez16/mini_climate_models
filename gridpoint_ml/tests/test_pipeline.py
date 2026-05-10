@@ -34,8 +34,12 @@ def _write_training_script(path: str) -> None:
 
         def load(path):
             import json
-            with open(path + ".json") as f:
+            with open(path) as f:
                 return json.load(f)
+
+        def predict(model, X):
+            import numpy as np
+            return {"pred": np.zeros(X.shape[0], dtype="f4")}
     """)
     with open(path, "w") as f:
         f.write(code)
