@@ -31,7 +31,7 @@ def save(model, path: str) -> str:
 
 def load(path: str):
     """Load a persisted scikit-learn model from disk."""
-    return joblib.load(path + ".joblib")
+    return joblib.load(path)
 
 
 def predict(model, X: np.ndarray) -> dict:

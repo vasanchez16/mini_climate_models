@@ -1,0 +1,5 @@
+[prediction]
+metadata_dir = "/ocean/projects/atm200005p/vsanchez/results_2026_Q1/local_ml_predictions/test_run/trained_models"
+test_features_csv = "/ocean/projects/atm200005p/vsanchez/results_2026_Q1/local_ml_predictions/test_features_small.csv"
+output_dir = "/ocean/projects/atm200005p/vsanchez/results_2026_Q1/local_ml_predictions/test_run/predictions"
+max_workers = 64

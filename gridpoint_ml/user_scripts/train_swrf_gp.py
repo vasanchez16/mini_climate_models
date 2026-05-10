@@ -40,13 +40,13 @@ def save(model, path: str) -> str:
 
 def load(path: str):
     """Load a persisted scikit-learn model from disk."""
-    return joblib.load(path + ".joblib")
+    return joblib.load(path)
 
 
 def predict(model, X: np.ndarray) -> dict:
     """Run predictions and return a dict of named output arrays, each shape (n_variants,)."""
     mean, std = model.predict(X, return_std=True)
     return {
-        "temperature_mean": mean,
-        "temperature_std": std,
+        "meanResponse": mean,
+        "sdResponse": std,
     }
